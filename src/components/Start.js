@@ -5,13 +5,12 @@ const Start = () => {
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        // Perform the logout functionality here, e.g., clear the user's session or token.
-        // You can use localStorage.removeItem or a similar method to clear the token.
+        console.log("Logout button clicked");
         localStorage.removeItem("token");
-
-        // Redirect the user to the login page or any other desired page after logging out.
         navigate("/login");
     };
+
+    console.log("Start component rendered");
 
     return (
         <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "20vh" }}>

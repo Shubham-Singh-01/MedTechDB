@@ -29,6 +29,9 @@ const Navbar = () => {
               <Link className="nav-link" to="/">Gallery</Link>
             </li>
             <li className="nav-item">
+              <Link className="nav-link" to="/">Contact Us</Link>
+            </li>
+            <li className="nav-item">
               <Link className="nav-link" to="/about">About Us</Link>
             </li>
             {/* Other Servies(Dropdown) */}
@@ -52,11 +55,6 @@ const Navbar = () => {
             <button className="btn btn-outline-success" type="submit">Search</button>
           </form>
 
-          {/* Login/Signup Buttons */}
-          <div className="d-flex">
-            <Link className="btn btn-primary mx-1" to="/login" role="button">Login</Link>
-            <Link className="btn btn-primary" to="/signup" role="button">Signup</Link>
-          </div>
         </div>
       </div>
     </nav>

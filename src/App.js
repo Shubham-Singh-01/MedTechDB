@@ -10,6 +10,7 @@ import Start from './components/Start';
 import About from './components/About';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import PrivateRoute from './PrivateRoute';
 
 function App() {
     return (
@@ -18,10 +19,12 @@ function App() {
                 <Navbar />
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/start" element={<Start />} />
-                    <Route path="/about" element={<About />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/about" element={<About />} />
                     <Route path="/signup" element={<Signup />} />
+                    <Route path="/start" element={<PrivateRoute />}>
+                    <Route path="/start" element={<Start />} />
+                    </Route>
                 </Routes>
             </Router>
         </>
