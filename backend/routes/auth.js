@@ -7,17 +7,21 @@ var jwt = require("jsonwebtoken");
 var fetchuser = require('../middleware/fetchuser');
 
 const JWT_SECRET = "FollowThatDamnTrainCJ";
+const generateSessionToken = () => {
+  // Logic to generate a unique session token
+  return Math.random().toString(36).substr(2, 9);
+};
 
-//ROUTE:1 Create a User using: POST "/api/auth/Createuser". No Login Required
+// ROUTE:1 Create a User using: POST "/api/auth/Createuser". No Login Required
 router.post(
-  "/Createuser",
+  "/createuser",
   [
     body("name", "Enter a valid name").isLength({ min: 5 }),
     body("password", "Enter a valid 8 Character password").isLength({ min: 8 }),
     body("email", "Enter a valid email").isEmail(),
   ],
   async (req, res) => {
-    let success = false
+    let success = false;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ success, errors: errors.array() });
@@ -43,11 +47,13 @@ router.post(
       const data = {
         user: {
           id: user.id,
+          type: 'user'
         },
+        sessionToken: generateSessionToken() // Add session token to the response payload
       };
       const authtoken = jwt.sign(data, JWT_SECRET);
-      success = true
-      res.json({ success, authtoken });
+      success = true;
+      res.json({ success, authtoken, sessionToken: data.sessionToken });
     } catch (error) {
       console.error(error.message);
       res.status(500).send("Internal Server error");
@@ -55,7 +61,7 @@ router.post(
   }
 );
 
-//ROUTE 2: Authenticate a User using: POST "/api/auth/login". No Login Required
+// ROUTE 2: Authenticate a User using: POST "/api/auth/login". No Login Required
 router.post(
   "/login",
   [
@@ -63,7 +69,7 @@ router.post(
     body("password", "Password cannot be blank").exists(),
   ],
   async (req, res) => {
-    let success = false
+    let success = false;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -73,7 +79,7 @@ router.post(
     try {
       let user = await User.findOne({ email });
       if (!user) {
-        success = false
+        success = false;
         return res
           .status(400)
           .json({ error: "Please try to login with correct credentials" });
@@ -81,7 +87,7 @@ router.post(
 
       const passwordCompare = await bcrypt.compare(password, user.password);
       if (!passwordCompare) {
-        success = false
+        success = false;
         return res
           .status(400)
           .json({ success, error: "Please try to login with correct credentials" });
@@ -90,11 +96,13 @@ router.post(
       const data = {
         user: {
           id: user.id,
+          type: 'user'
         },
+        sessionToken: generateSessionToken() // Add session token to the response payload
       };
       const authtoken = jwt.sign(data, JWT_SECRET);
       success = true;
-      res.json({ success, authtoken });
+      res.json({ success, authtoken, sessionToken: data.sessionToken });
     } catch (error) {
       console.error(error.message);
       res.status(500).send("Internal Server error");
@@ -102,18 +110,43 @@ router.post(
   }
 );
 
-//ROUTE 3: Get LoggedIN User Details using: POST "/api/auth/getuser". Login Required
-router.post("/getuser", fetchuser, async (req, res) => {
-
-    try {
-      userId = req.user.id;
-      const user = await User.findById(userId).select("-password");
-      res.send(user)
-    } catch (error) {
-      console.error(error.message);
-      res.status(500).send("Internal Server error");
-    }
+// ROUTE 3: Get LoggedIN User Details using: POST "/api/auth/getuser". Login Required
+router.get("/getuser", fetchuser, async (req, res) => {
+  try {
+    userId = req.user.id;
+    const user = await User.findById(userId).select("-password");
+    res.json(user);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: "Internal Server Error" });
   }
-);
+});
+
+// ROUTE 4: Update User Data using: PUT "/api/auth/updateuser". Login Required
+router.put('/updateuser', fetchuser, async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const formData = req.body; // Assuming the frontend sends the form data directly
+
+    // Remove fields that should not be updated
+    const { password, email, __v, ...updateData } = formData;
+
+    // Build the update object with non-empty fields
+    const updateObj = Object.entries(updateData).reduce((obj, [key, value]) => {
+      if (value !== '') {
+        obj[key] = value;
+      }
+      return obj;
+    }, {});
+
+    // Find the user by ID and update their data
+    const user = await User.findByIdAndUpdate(userId, updateObj, { new: true });
+
+    res.json(user);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
 module.exports = router;

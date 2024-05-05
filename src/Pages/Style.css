@@ -1,0 +1,173 @@
+/* Image Gallery */
+
+.image-gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.featured-image {
+  width: 50%; /* Adjust width as needed */
+  height: 20%; /* Adjust height as needed */
+  object-fit: cover; /* Scales image to fill container while maintaining aspect ratio */
+  border-radius: 13px; /* Add rounded corners */
+}
+
+.image-strip {
+  display: flex;
+  margin-top: 10px;
+}
+
+.image-strip img {
+  width: 135px; /* Adjust width as needed */
+  height: 100px; /* Adjust height as needed */
+  margin-right: 7px;
+  object-fit: cover; /* Scales image to fill container while maintaining aspect ratio */
+  border-radius: 10px; /* Add rounded corners */
+}
+
+.arrow {
+  padding: 10px;
+  border: 70px;
+  border-radius: 10px;
+  border-color: black;
+  background-color: rgb(59, 195, 240);
+  cursor: pointer;
+}
+
+.arrow:hover {
+  opacity: 0.7;
+}
+
+/* Start.js */
+.start-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: transparent;
+  padding: 1rem 2rem; /* Reduce vertical padding */
+  min-height: 100vh;
+}
+
+.content {
+  background-color: transparent;
+  border-radius: 15px;
+  box-shadow: none;
+  padding: 0rem;
+  max-width: 75vw;
+  width: 100%;
+  height: auto;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  background-color: #f3f8ff;
+  border-radius: 15px;
+  box-shadow: 5px 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin-top: 0; /* Remove the margin-top */
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-row .col {
+  flex: 1;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  background-color: #fff;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+/* Start, Start Doctor Page */
+.profile-box {
+  background-color: rgba(255, 255, 255, 0.8); /* Adjust transparency as needed */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px;
+  width: 500px; /* Adjust width as needed */
+  height: 270px; /* Adjust height as needed */
+  text-align: center; /* Center content horizontally */
+  position: absolute; /* Position the box in the center */
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.retrieve-patient-section {
+  background-color: rgba(255, 255, 255, 0.8); /* Adjust transparency as needed */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px;
+  width: 500px; /* Adjust width as needed */
+  height: 300px; /* Adjust height as needed */
+  text-align: center; /* Center content horizontally */
+  position: absolute; /* Position the box in the center */
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, +10%);
+}
+
+/* User Details Retrevial Page */
+
+.user-details-page {
+  background-color: #f3f8ff;
+  border-radius: 15px;
+  box-shadow: 5px 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  max-width: 800px; /* Adjust the maximum width as needed */
+  margin: 0 auto; /* Center the component horizontally */
+}
+
+.user-details-form {
+  margin-bottom: 1.5rem;
+}
+
+.user-details-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.user-details-form .form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.user-details-form .form-row .col {
+  flex: 1;
+}
+
+.user-details-form .form-control {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  background-color: #fff;
+}
+
+.user-details-form .form-control[disabled] {
+  background-color: #e9ecef;
+  opacity: 1; /* Ensure disabled fields are fully visible */
+}
+
+.user-details-form .user-photo {
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
