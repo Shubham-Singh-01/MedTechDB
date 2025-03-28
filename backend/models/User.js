@@ -35,11 +35,11 @@ const UserSchema = new mongoose.Schema({
   
   heightFeet: {
     type: Number,
-    required: true
+    // required: true
   },
   heightInches: {
     type: Number,
-    required: true
+    // required: true
   }, 
   
   weight: mongoose.SchemaTypes.String,
@@ -48,7 +48,7 @@ const UserSchema = new mongoose.Schema({
   
   dob: {
     type: Date,
-    required: true
+    // required: true
   },
   
   photo: mongoose.SchemaTypes.String,

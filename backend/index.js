@@ -1,3 +1,4 @@
+//index.js backend
 const connectToMongo = require('./db');
 const express = require('express');
 

@@ -1,4 +1,4 @@
-// server.js or app.js
+// user-data.js
 app.put('/api/user-data', (req, res) => {
     const { userId, doctorId } = req.session || {};
     
