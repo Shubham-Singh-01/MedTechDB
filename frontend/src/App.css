@@ -15,7 +15,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 0px;
-  background-image: url("C:/Users/Shubham Singh/Documents/My Docs/Coding Docs/Project Files/MedTechDB/frontend/public/HomeAssetMain.jpg");
+  background-image: url("../assets/HomeAssetMain.jpg");  
   background-size: cover;
   background-repeat: no-repeat;
 }
