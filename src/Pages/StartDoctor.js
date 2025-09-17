@@ -127,16 +127,26 @@ const StartDoctor = () => {
   console.log("StartDoctor component rendered");
 
   return (
-    <div className="start-container">
+    <div className="auth-container">
       {isLoading ? (
-        <div className="loading">Loading...</div>
+        <div className="auth-card">
+          <div className="loading-spinner">
+            <div className="spinner"></div>
+            <p>Loading your profile...</p>
+          </div>
+        </div>
       ) : error ? (
-        <div className="error">
-          <p>{error}</p>
-          <button onClick={() => window.location.reload()}>Retry</button>
+        <div className="auth-card">
+          <div className="error-message">
+            <h3>Oops! Something went wrong</h3>
+            <p>{error}</p>
+            <button onClick={() => window.location.reload()} className="auth-submit-btn">
+              Try Again
+            </button>
+          </div>
         </div>
       ) : (
-        <div className="content">
+        <>
           {isEditing ? (
             <EditProfileForm
               formData={formData}
@@ -145,57 +155,107 @@ const StartDoctor = () => {
               handleCancelClick={handleCancelClick}
             />
           ) : (
-            <div className="profile-box">
-              <h1>Welcome Doctor</h1>
-              <p>Name: {doctorData.name}</p>
-              <p>Email: {doctorData.email}</p>
-              {/* Display other doctor data */}
-              <div className="profile-actions">
-                <button onClick={handleEditClick} className="btn btn-primary">
-                  Edit Profile
-                </button>
-                <button onClick={handleLogout} className="btn btn-secondary">
-                  Logout
-                </button>
-                <div className="retrieve-patient-section">
-                  <h2>Retrieve Patient Details</h2>
-                  <div className="form-group">
-                    <label htmlFor="aadhaarSearch">
-                      Enter Aadhaar Card Number:
-                    </label>
-                    <input
-                      type="number"
-                      id="aadhaarSearch"
-                      name="aadhaarSearch"
-                      value={aadhaarSearch}
-                      onChange={(e) => setaadhaarSearch(e.target.value)}
-                      className="form-control"
-                    />
+            <div className="auth-card profile-dashboard doctor-dashboard">
+              <h1 className="auth-title">Welcome Doctor!</h1>
+              
+              <div className="doctor-layout">
+                <div className="doctor-profile-section">
+                  <div className="profile-info">
+                    <div className="profile-header">
+                      <div className="profile-avatar">
+                        {doctorData.name ? doctorData.name.charAt(0).toUpperCase() : 'D'}
+                      </div>
+                      <div className="profile-details">
+                        <h2>{doctorData.name}</h2>
+                        <p className="profile-email">{doctorData.email}</p>
+                      </div>
+                    </div>
+                    
+                    <div className="profile-stats">
+                      <div className="stat-item">
+                        <span className="stat-label">Phone</span>
+                        <span className="stat-value">{doctorData.phone1 || 'Not added'}</span>
+                      </div>
+                      <div className="stat-item">
+                        <span className="stat-label">Specialization</span>
+                        <span className="stat-value">{doctorData.specialization || 'Not specified'}</span>
+                      </div>
+                      <div className="stat-item">
+                        <span className="stat-label">License No.</span>
+                        <span className="stat-value">{doctorData.licenseNumber || 'Not added'}</span>
+                      </div>
+                      <div className="stat-item">
+                        <span className="stat-label">Experience</span>
+                        <span className="stat-value">{doctorData.experience ? `${doctorData.experience} years` : 'Not added'}</span>
+                      </div>
+                      <div className="stat-item">
+                        <span className="stat-label">Hospital</span>
+                        <span className="stat-value">{doctorData.hospital || 'Not specified'}</span>
+                      </div>
+                      <div className="stat-item">
+                        <span className="stat-label">Location</span>
+                        <span className="stat-value">{doctorData.address ? doctorData.address.split(',')[0] : 'Not added'}</span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="form-group">
-                    <label htmlFor="mobileSearch">Enter Mobile Number:</label>
-                    <input
-                      type="text"
-                      id="mobileSearch"
-                      name="mobileSearch"
-                      value={mobileSearch}
-                      onChange={(e) => setMobileSearch(e.target.value)}
-                      className="form-control"
-                    />
+                  
+                  <div className="profile-actions">
+                    <button onClick={handleEditClick} className="auth-submit-btn profile-btn-primary">
+                      Edit Profile
+                    </button>
+                    <button onClick={handleLogout} className="auth-submit-btn profile-btn-secondary">
+                      Logout
+                    </button>
                   </div>
-                  <button
-                    onClick={handleRetrieveUserDetails}
-                    className="btn btn-primary"
-                  >
-                    Retrieve Patient Details
-                  </button>
+                </div>
+
+                <div className="doctor-patient-section">
+                  <div className="doctor-patient-search">
+                    <h3 className="search-title">Patient Lookup</h3>
+                    <div className="search-form">
+                      <div className="auth-form-group">
+                        <label htmlFor="aadhaarSearch" className="auth-form-label">
+                          Aadhaar Card Number:
+                        </label>
+                        <input
+                          type="number"
+                          id="aadhaarSearch"
+                          name="aadhaarSearch"
+                          value={aadhaarSearch}
+                          onChange={(e) => setaadhaarSearch(e.target.value)}
+                          className="auth-form-control"
+                          placeholder="Enter 12-digit Aadhaar number"
+                        />
+                      </div>
+                      <div className="auth-form-group">
+                        <label htmlFor="mobileSearch" className="auth-form-label">
+                          Mobile Number:
+                        </label>
+                        <input
+                          type="text"
+                          id="mobileSearch"
+                          name="mobileSearch"
+                          value={mobileSearch}
+                          onChange={(e) => setMobileSearch(e.target.value)}
+                          className="auth-form-control"
+                          placeholder="Enter 10-digit mobile number"
+                        />
+                      </div>
+                      <button
+                        onClick={handleRetrieveUserDetails}
+                        className="auth-submit-btn patient-search-btn"
+                      >
+                        Search Patient
+                      </button>
+                    </div>
+                  </div>
 
                   {userData && <UserDetailsPage userData={userData} />}
                 </div>
               </div>
             </div>
           )}
-        </div>
+        </>
       )}
     </div>
   );

@@ -5,7 +5,10 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">MedTech</Link>
+        <Link className="navbar-brand" to="/">
+          <img src="/Favicon.ico" alt="MedTech Logo" width="30" height="30" className="d-inline-block align-text-top me-2"/>
+          MedTech
+        </Link>
         <button
           className="navbar-toggler"
           type="button"

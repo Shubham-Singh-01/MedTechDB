@@ -1,0 +1,624 @@
+/* =================================
+   EDIT PROFILE FORM STYLES
+   ================================= */
+
+/* Body scroll prevention is handled by JavaScript in the component */
+
+/* Main Container */
+.edit-profile-container {
+  height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background-image: url("C:/Users/Shubham Singh/Documents/My Docs/Coding Docs/Project Files/MedTechDB/public/HomeAssetMain.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 0.5rem 1rem;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* Form Card */
+.edit-profile-card {
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 24px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  padding: 2rem;
+  width: 100%;
+  max-width: 550px;
+  max-height: 95vh;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow-y: auto;
+  margin-top: 1rem;
+}
+
+.edit-profile-card:hover {
+  background: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Form Title */
+.edit-profile-title {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a252f;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.edit-profile-title::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(41, 128, 185, 0.8), rgba(52, 152, 219, 0.8));
+  border-radius: 2px;
+}
+
+/* Page Indicator */
+.page-indicator {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  gap: 0.5rem;
+}
+
+.page-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(41, 128, 185, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.page-dot.active {
+  background: rgba(41, 128, 185, 0.8);
+  transform: scale(1.1);
+}
+
+.page-dot.completed {
+  background: rgba(46, 204, 113, 0.8);
+}
+
+/* Form Groups */
+.edit-form-group {
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+
+.edit-form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.edit-form-control {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 2px solid rgba(41, 128, 185, 0.25);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+  color: #1a252f;
+  box-sizing: border-box;
+  font-family: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.edit-form-control::placeholder {
+  color: rgba(26, 37, 47, 0.6);
+  font-style: italic;
+}
+
+.edit-form-control:focus {
+  outline: none;
+  border-color: rgba(41, 128, 185, 0.7);
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 0 3px rgba(41, 128, 185, 0.1);
+  transform: translateY(-1px);
+}
+
+.edit-form-control:hover:not(:focus) {
+  border-color: rgba(41, 128, 185, 0.4);
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.edit-form-control:disabled {
+  background: rgba(200, 200, 200, 0.3);
+  color: rgba(26, 37, 47, 0.6);
+  cursor: not-allowed;
+  border-color: rgba(41, 128, 185, 0.15);
+}
+
+/* Enhanced Select Styling */
+.edit-form-control select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'><path fill='%23666' d='M2 0L0 2h4zm0 5L0 3h4z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 12px;
+  padding-right: 2.5rem;
+}
+
+.edit-form-control option {
+  background: rgba(255, 255, 255, 0.95);
+  color: #1a252f;
+  padding: 0.5rem;
+}
+
+/* Textarea Styling */
+.edit-form-control.textarea {
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+}
+
+/* File Input Styling */
+.edit-file-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 2px dashed rgba(41, 128, 185, 0.4);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #2c3e50;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.edit-file-input:hover {
+  border-color: rgba(41, 128, 185, 0.6);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Form Row for Side-by-Side Inputs */
+.edit-form-row {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.edit-form-row .edit-form-group {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+/* Button Container */
+.edit-form-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.edit-btn {
+  padding: 0.8rem 1.8rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.edit-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.edit-btn:hover::before {
+  left: 100%;
+}
+
+.edit-btn-primary {
+  background: rgba(41, 128, 185, 0.9);
+  color: white;
+  border: 1px solid rgba(41, 128, 185, 0.4);
+}
+
+.edit-btn-primary:hover {
+  background: rgba(31, 97, 141, 0.95);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(41, 128, 185, 0.4);
+}
+
+.edit-btn-secondary {
+  background: rgba(149, 165, 166, 0.9);
+  color: white;
+  border: 1px solid rgba(149, 165, 166, 0.4);
+}
+
+.edit-btn-secondary:hover {
+  background: rgba(127, 140, 141, 0.95);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(149, 165, 166, 0.4);
+}
+
+.edit-btn-danger {
+  background: rgba(231, 76, 60, 0.9);
+  color: white;
+  border: 1px solid rgba(231, 76, 60, 0.4);
+}
+
+.edit-btn-danger:hover {
+  background: rgba(192, 57, 43, 0.95);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+}
+
+.edit-btn:active {
+  transform: translateY(0);
+}
+
+/* Navigation Buttons */
+.edit-nav-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.edit-action-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Progress Bar */
+.edit-progress-container {
+  margin-bottom: 1.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  height: 4px;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+}
+
+.edit-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, rgba(41, 128, 185, 0.8), rgba(52, 152, 219, 0.8));
+  border-radius: 8px;
+  transition: width 0.4s ease;
+}
+
+/* Form Validation */
+.edit-form-control.error {
+  border-color: rgba(231, 76, 60, 0.7);
+  background: rgba(255, 235, 238, 0.3);
+}
+
+.edit-form-control.success {
+  border-color: rgba(46, 204, 113, 0.7);
+  background: rgba(235, 255, 235, 0.3);
+}
+
+.edit-error-message {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+  font-weight: 500;
+}
+
+/* Loading State */
+.edit-form-loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.edit-loading-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 0.5rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =================================
+   RESPONSIVE DESIGN
+   ================================= */
+
+@media (max-width: 768px) {
+  .edit-profile-container {
+    padding: 0.75rem;
+    align-items: center;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    background-attachment: scroll;
+  }
+  
+  .edit-profile-card {
+    padding: 1.5rem;
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    max-height: 95vh;
+    border-radius: 16px;
+    box-sizing: border-box;
+  }
+  
+  .edit-profile-title {
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+    text-align: center;
+  }
+  
+  .page-indicator {
+    margin-bottom: 1.2rem;
+    gap: 0.4rem;
+    justify-content: center;
+  }
+  
+  .page-dot {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .edit-form-group {
+    margin-bottom: 1.2rem;
+    width: 100%;
+  }
+  
+  .edit-form-label {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    text-align: left;
+    display: block;
+  }
+  
+  .edit-form-control {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    font-size: 16px; /* Prevents zoom on iOS */
+    border-radius: 8px;
+    box-sizing: border-box;
+    display: block;
+  }
+  
+  .edit-form-control select {
+    background-size: 12px;
+    padding-right: 2.5rem;
+  }
+  
+  .edit-form-control.textarea {
+    min-height: 90px;
+    resize: vertical;
+  }
+  
+  .edit-form-row {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+  
+  .edit-form-row .edit-form-group {
+    margin-bottom: 0;
+    width: 100%;
+  }
+  
+  .edit-form-buttons {
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+    width: 100%;
+  }
+  
+  .edit-nav-buttons,
+  .edit-action-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+  
+  .edit-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.85rem 1.5rem;
+    font-size: 1rem;
+    min-height: 50px; /* Better touch target */
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .edit-file-input {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  
+  .edit-progress-container {
+    margin-bottom: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .edit-profile-container {
+    padding: 0.5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    background-attachment: scroll;
+    align-items: center;
+  }
+  
+  .edit-profile-card {
+    padding: 1.25rem;
+    margin: 0;
+    border-radius: 12px;
+    max-height: 96vh;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .edit-profile-title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .page-indicator {
+    margin-bottom: 1rem;
+    gap: 0.3rem;
+    justify-content: center;
+  }
+  
+  .page-dot {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .edit-form-group {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+  
+  .edit-form-label {
+    font-size: 0.85rem;
+    margin-bottom: 0.4rem;
+    text-align: left;
+    display: block;
+  }
+  
+  .edit-form-control {
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+    font-size: 16px; /* Prevents zoom on iOS */
+    border-radius: 6px;
+    box-sizing: border-box;
+    display: block;
+  }
+  
+  .edit-form-control select {
+    background-size: 10px;
+    padding-right: 2.2rem;
+  }
+  
+  .edit-form-control.textarea {
+    min-height: 75px;
+  }
+  
+  .edit-form-row {
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+  }
+  
+  .edit-form-row .edit-form-group {
+    margin-bottom: 0;
+    width: 100%;
+  }
+  
+  .edit-btn {
+    padding: 0.75rem 1.2rem;
+    font-size: 0.95rem;
+    min-height: 48px; /* Better touch target for small screens */
+    width: 100%;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .edit-form-buttons {
+    margin-top: 1.5rem;
+    gap: 0.8rem;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .edit-file-input {
+    padding: 0.7rem 0.8rem;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .edit-profile-container {
+    align-items: center;
+  }
+  
+  .edit-profile-card {
+    max-height: 95vh;
+    margin-top: 0;
+  }
+  
+  .edit-profile-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .edit-form-group {
+    margin-bottom: 0.8rem;
+  }
+  
+  .edit-form-buttons {
+    margin-top: 1rem;
+  }
+}
+
+/* Custom Scrollbar */
+.edit-profile-card::-webkit-scrollbar {
+  width: 6px;
+}
+
+.edit-profile-card::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.edit-profile-card::-webkit-scrollbar-thumb {
+  background: rgba(41, 128, 185, 0.5);
+  border-radius: 3px;
+}
+
+.edit-profile-card::-webkit-scrollbar-thumb:hover {
+  background: rgba(41, 128, 185, 0.7);
+}

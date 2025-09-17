@@ -1,59 +1,37 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Style.css";
 
 const LoginSelect = () => {
   return (
-    <div style={{ position: "relative", width: "100%", height: "100vh" }}>
-      <div
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          textAlign: "center",
-        }}
-      >
-        <div
-          style={{
-            backdropFilter: "blur(8px)",
-            backgroundColor: "rgba(255, 255, 255, 0.5)",
-            borderRadius: "30px",
-            padding: "50px",
-          }}
-        >
-          <h2 style={{ marginBottom: "30px", fontSize: "24px" }}>Choose Your Login Type</h2>
-
-          <div style={{ marginBottom: "15px" }}>
+    <div className="auth-container">
+      <div className="auth-card">
+        <div className="login-select-content">
+          <h2 className="auth-title">Choose Your Login Type</h2>
+          <p className="login-select-subtitle">
+            Select the appropriate option to access your account
+          </p>
+          <div className="login-select-buttons">
             <Link
-              className="btn btn-primary btn-lg"
+              className="auth-submit-btn login-select-btn"
               to="/Login"
-              role="button"
-              style={{
-                borderRadius: "30px",
-                padding: "10px 30px",
-                fontSize: "18px",
-              }}
             >
               User Login
             </Link>
-          </div>
-
-          <div >
             <Link
-              className="btn btn-primary btn-lg"
+              className="auth-submit-btn login-select-btn"
               to="/LoginDoctor"
-              role="button"
-              style={{
-                borderRadius: "30px",
-                padding: "10px 30px",
-                fontSize: "18px",
-              }}
             >
               Doctor Login
             </Link>
           </div>
-          
-
+          <div className="auth-link-text login-select-links">
+            Need an account?
+            <br />
+            <Link to="/signup" className="auth-link">Sign up as User</Link>
+            {' • '}
+            <Link to="/signupDoctor" className="auth-link">Sign up as Doctor</Link>
+          </div>
         </div>
       </div>
     </div>

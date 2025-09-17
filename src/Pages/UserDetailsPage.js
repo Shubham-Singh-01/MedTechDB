@@ -150,7 +150,7 @@ const UserDetailsForm = ({ userData }) => {
       {userData.photo && (
         <div className="form-group">
           <label>Photo:</label>
-          <img src={userData.photo} alt="User Photo" className="user-photo" />
+          <img src={userData.photo} alt={userData.name} className="user-photo" />
         </div>
       )}
     </div>

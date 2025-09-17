@@ -109,40 +109,98 @@ const Start = () => {
   console.log("Start component rendered");
 
   return (
-    <div className="start-container">
+    <div className="auth-container">
       {isLoading ? (
-        <div className="loading">Loading...</div>
+        <div className="auth-card">
+          <div className="loading-spinner">
+            <div className="spinner"></div>
+            <p>Loading your profile...</p>
+          </div>
+        </div>
       ) : error ? (
-        <div className="error">
-          <p>{error}</p>
-          <button onClick={() => window.location.reload()}>Retry</button>
+        <div className="auth-card">
+          <div className="error-message">
+            <h3>Oops! Something went wrong</h3>
+            <p>{error}</p>
+            <button onClick={() => window.location.reload()} className="auth-submit-btn">
+              Try Again
+            </button>
+          </div>
         </div>
       ) : (
-        <div className="content">
+        <>
           {isEditing ? (
             <EditProfileForm
               formData={formData}
-              setFormData={setFormData} // Pass setFormData as a prop
+              setFormData={setFormData}
               handleSubmit={handleSubmit}
               handleCancelClick={handleCancelClick}
             />
           ) : (
-            <div className="profile-box">
-              <h1>Welcome {userData.name}</h1>
-              <p>Name: {userData.name}</p>
-              <p>Email: {userData.email}</p>
-              {/* Display other user data */}
+            <div className="auth-card profile-dashboard">
+              <h1 className="auth-title">Welcome Back!</h1>
+              <div className="profile-info">
+                <div className="profile-header">
+                  <div className="profile-avatar">
+                    {userData.name ? userData.name.charAt(0).toUpperCase() : 'U'}
+                  </div>
+                  <div className="profile-details">
+                    <h2>{userData.name}</h2>
+                    <p className="profile-email">{userData.email}</p>
+                  </div>
+                </div>
+                
+                <div className="profile-stats">
+                  <div className="stat-item">
+                    <span className="stat-label">Phone</span>
+                    <span className="stat-value">{userData.phone1 || 'Not added'}</span>
+                  </div>
+                  <div className="stat-item">
+                    <span className="stat-label">Blood Group</span>
+                    <span className="stat-value">{userData.bloodGroup || 'Not added'}</span>
+                  </div>
+                  <div className="stat-item">
+                    <span className="stat-label">Gender</span>
+                    <span className="stat-value">{userData.gender || 'Not specified'}</span>
+                  </div>
+                  <div className="stat-item">
+                    <span className="stat-label">Weight</span>
+                    <span className="stat-value">{userData.weight ? `${userData.weight} kg` : 'Not added'}</span>
+                  </div>
+                  <div className="stat-item">
+                    <span className="stat-label">Height</span>
+                    <span className="stat-value">
+                      {userData.heightFeet && userData.heightInches 
+                        ? `${userData.heightFeet}'${userData.heightInches}"` 
+                        : 'Not added'}
+                    </span>
+                  </div>
+                  <div className="stat-item">
+                    <span className="stat-label">Recovery Email</span>
+                    <span className="stat-value">{userData.recoveryEmail || 'Not added'}</span>
+                  </div>
+                  <div className="stat-item">
+                    <span className="stat-label">Ayushman Card</span>
+                    <span className="stat-value">{userData.ayushmanCard || 'Not linked'}</span>
+                  </div>
+                  <div className="stat-item">
+                    <span className="stat-label">Location</span>
+                    <span className="stat-value">{userData.address ? userData.address.split(',')[0] : 'Not added'}</span>
+                  </div>
+                </div>
+              </div>
+              
               <div className="profile-actions">
-                <button onClick={handleEditClick} className="btn btn-primary">
+                <button onClick={handleEditClick} className="auth-submit-btn profile-btn-primary">
                   Edit Profile
                 </button>
-                <button onClick={handleLogout} className="btn btn-secondary">
+                <button onClick={handleLogout} className="auth-submit-btn profile-btn-secondary">
                   Logout
                 </button>
               </div>
             </div>
           )}
-        </div>
+        </>
       )}
     </div>
   );

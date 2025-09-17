@@ -4,43 +4,20 @@ import "../Pages/Style.css";
 
 const Home = () => {
   return (
-    <div style={{ position: "relative", width: "100%", height: "100vh" }}>
-      <div
-        style={{
-          position: "absolute",
-          top: "70%",
-          left: "18%",
-          transform: "translate(-50%, -50%)",
-          textAlign: "left",
-        }}
-      >
-        <div
-          style={{
-            backdropFilter: "blur(8px)",
-            backgroundColor: "rgba(255, 255, 255, 0.5)",
-            borderRadius: "20px", // Adjust the value for desired corner radius
-            padding: "20px",
-          }}
-        >
-          <h1>Welcome to MedTech</h1>
-          <h5 style={{ marginBottom: "10px" }}>
-            {" "}
-            Many Problems --{">"} One Solution{" "}
-          </h5>
-          <div className="d-flex">
-            <Link
-              className="btn btn-primary mx-0"
-              to="/LoginSelect"
-              role="button"
-              style={{
-                fontSize: "17px",
-                borderRadius: "8px",
-                width: "85px",
-              }}
-            >
-              Sign in
-            </Link>
-          </div>
+    <div className="auth-container home-layout">
+      <div className="auth-card home-card-wider">
+        <h1 className="auth-title home-title-larger">Welcome to MedTech</h1>
+        <h5 className="home-subtitle">
+          Many Problems --{">"} One Solution
+        </h5>
+        <div className="home-actions">
+          <Link
+            className="auth-submit-btn"
+            to="/LoginSelect"
+            role="button"
+          >
+            Get Started
+          </Link>
         </div>
       </div>
     </div>

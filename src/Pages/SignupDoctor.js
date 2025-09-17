@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import "./Style.css";
 
-const Signup = () => {
+const SignupDoctor = () => {
   const [credentials, setCredentials] = useState({
     name: "",
     email: "",
@@ -30,7 +31,7 @@ const Signup = () => {
     if (response.ok) {
       const json = await response.json();
       console.log(json);
-
+      
       // Save the auth token and redirect
       localStorage.setItem("token", json.authtoken);
       localStorage.setItem('sessionToken', json.sessionToken); // Store session token
@@ -45,82 +46,85 @@ const Signup = () => {
   };
 
   return (
-    <div
-      className="container d-flex justify-content-center align-items-center"
-      style={{
-        position: "absolute",
-        top: "15%",
-        left: "30%",
-        minHeight: "75vh",
-        maxWidth: "600px",
-        maxHeight: "90vh",
-        }}
-    >
-      <form onSubmit={handleSubmit} className="w-75">
-        <h5 align="center" >Doctor Signup</h5>
-        <div className="mb-3">
-          <label htmlFor="name" className="form-label">
-            Name
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="name"
-            name="name"
-            onChange={onChange}
-            aria-describedby="emailHelp"
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">
-            Email address
-          </label>
-          <input
-            type="email"
-            className="form-control"
-            id="email"
-            onChange={onChange}
-            name="email"
-            aria-describedby="emailHelp"
-          />
-          <div id="emailHelp" className="form-text">
-            We'll never share your email with anyone else.
+    <div className="auth-container">
+      <div className="auth-card">
+        <h2 className="auth-title">Doctor Signup</h2>
+        <form onSubmit={handleSubmit} className="auth-form">
+          <div className="auth-form-group">
+            <label htmlFor="name" className="auth-form-label">
+              Full Name
+            </label>
+            <input
+              type="text"
+              className="auth-form-control"
+              id="name"
+              name="name"
+              value={credentials.name}
+              onChange={onChange}
+              placeholder="Enter your full name"
+              required
+            />
           </div>
-        </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">
-            Password
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            name="password"
-            id="password"
-            onChange={onChange}
-            minLength={8}
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="cpassword" className="form-label">
-            Confirm Password
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            name="cpassword"
-            id="cpassword"
-            onChange={onChange}
-            minLength={8}
-            required
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
+          <div className="auth-form-group">
+            <label htmlFor="email" className="auth-form-label">
+              Email Address
+            </label>
+            <input
+              type="email"
+              className="auth-form-control"
+              id="email"
+              onChange={onChange}
+              name="email"
+              value={credentials.email}
+              placeholder="Enter your email"
+              required
+            />
+            <div className="auth-form-text">
+              We'll never share your email with anyone else.
+            </div>
+          </div>
+          <div className="auth-form-group">
+            <label htmlFor="password" className="auth-form-label">
+              Password
+            </label>
+            <input
+              type="password"
+              className="auth-form-control"
+              name="password"
+              id="password"
+              value={credentials.password}
+              onChange={onChange}
+              placeholder="Enter your password"
+              minLength={8}
+              required
+            />
+          </div>
+          <div className="auth-form-group">
+            <label htmlFor="cpassword" className="auth-form-label">
+              Confirm Password
+            </label>
+            <input
+              type="password"
+              className="auth-form-control"
+              name="cpassword"
+              id="cpassword"
+              value={credentials.cpassword}
+              onChange={onChange}
+              placeholder="Confirm your password"
+              minLength={8}
+              required
+            />
+          </div>
+          <button type="submit" className="auth-submit-btn">
+            Create Account
+          </button>
+          <p className="auth-link-text">
+            Already have an account? <Link to="/loginDoctor" className="auth-link">Sign in</Link>
+          </p>
+        </form>
+      </div>
     </div>
   );
 };
 
-export default Signup;
+export default SignupDoctor;
