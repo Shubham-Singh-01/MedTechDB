@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import "./Navbar.css";
 
@@ -6,7 +6,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleBrandClick = (e) => {
+  const handleBrandClick = useCallback((e) => {
     e.preventDefault();
     
     // Scroll to top with smooth animation
@@ -37,7 +37,7 @@ const Navbar = () => {
       // Force scroll after navigation with a small delay
       setTimeout(scrollToTop, 100);
     }
-  };
+  }, [location.pathname, navigate]);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
