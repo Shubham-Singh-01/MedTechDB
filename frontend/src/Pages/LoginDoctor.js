@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import "./Style.css";
+import "./LoginDoctor.css";
 
 const LoginDoctor = (props) => {
   const [credentials, setCredential] = useState({ email: "", password: "" });

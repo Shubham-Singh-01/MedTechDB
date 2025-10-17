@@ -1,18 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../Pages/Style.css";
+import "./Home.css";
 
 const Home = () => {
   return (
-    <div className="auth-container home-layout">
-      <div className="auth-card home-card-wider">
-        <h1 className="auth-title home-title-larger">Welcome to MedTech</h1>
+    <div className="home-container">
+      <div className="home-card">
+        <h1 className="home-title">Welcome to MedTech</h1>
         <h5 className="home-subtitle">
           Many Problems --{">"} One Solution
         </h5>
         <div className="home-actions">
           <Link
-            className="auth-submit-btn"
+            className="home-btn"
             to="/LoginSelect"
             role="button"
           >

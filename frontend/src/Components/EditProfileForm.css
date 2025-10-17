@@ -15,7 +15,10 @@
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
-  padding: 0.5rem 1rem;
+  padding-top: 4rem; 
+  padding-bottom: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   overflow: hidden;
   position: fixed;
   top: 0;
@@ -39,7 +42,7 @@
   transition: all 0.4s ease;
   position: relative;
   overflow-y: auto;
-  margin-top: 1rem;
+  margin-top: 0; /* Removed since container already has padding-top: 2rem */
 }
 
 .edit-profile-card:hover {
@@ -360,8 +363,11 @@
 
 @media (max-width: 768px) {
   .edit-profile-container {
-    padding: 0.75rem;
-    align-items: center;
+    padding-top: 2rem; 
+    padding-bottom: 0.75rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    align-items: flex-start; /* Changed from center to flex-start */
     height: 100vh;
     position: fixed;
     top: 0;
@@ -478,7 +484,10 @@
 
 @media (max-width: 480px) {
   .edit-profile-container {
-    padding: 0.5rem;
+    padding-top: 4rem; /* Reduced from 4rem for mobile */
+    padding-bottom: 0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
     position: fixed;
     top: 0;
     left: 0;
@@ -486,7 +495,7 @@
     bottom: 0;
     overflow: hidden;
     background-attachment: scroll;
-    align-items: center;
+    align-items: flex-start; /* Changed from center to flex-start */
   }
   
   .edit-profile-card {
@@ -582,7 +591,8 @@
 /* Landscape orientation on mobile */
 @media (max-width: 768px) and (orientation: landscape) {
   .edit-profile-container {
-    align-items: center;
+    padding-top: 1.5rem; /* Reduced for landscape */
+    align-items: flex-start;
   }
   
   .edit-profile-card {

@@ -1,0 +1,78 @@
+/* =================================
+   NAVBAR MINIMAL ENHANCEMENTS
+   ================================= */
+
+/* Subtle improvements to the default Bootstrap navbar */
+.navbar {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Remove all hover transform effects */
+.navbar-brand {
+  transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: #3498db !important;
+}
+
+.nav-link {
+  transition: color 0.3s ease !important;
+}
+
+.nav-link:hover {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* Search Form Styling - Match site design */
+.navbar .form-control {
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+}
+
+.navbar .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.navbar .form-control:focus {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(52, 152, 219, 0.6);
+  color: #ffffff;
+  box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.15);
+}
+
+.navbar .btn-outline-success {
+  border-radius: 10px;
+  background: rgba(52, 152, 219, 0.2);
+  border: 1.5px solid rgba(52, 152, 219, 0.6);
+  color: #5dade2;
+  font-weight: 500;
+  padding: 0.5rem 1.25rem;
+  transition: all 0.3s ease;
+}
+
+.navbar .btn-outline-success:hover {
+  background: rgba(52, 152, 219, 0.3);
+  border-color: rgba(52, 152, 219, 0.8);
+  color: #85c1e9;
+  box-shadow: 0 0 15px rgba(52, 152, 219, 0.4);
+}
+
+/* Smooth transitions for dropdown */
+.dropdown-menu {
+  transition: all 0.2s ease;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 991px) {
+  .navbar-collapse {
+    margin-top: 0.5rem;
+  }
+}

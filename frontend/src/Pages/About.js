@@ -1,41 +1,50 @@
 import React from 'react';
-import './Style.css';
+import './About.css';
 
 const About = () => {
   return (
     <div className="page-container">
       <div className="page-card">
-        <h1 className="page-title">About MedTech: Revolutionizing Healthcare Information Sharing</h1>
+        <h1 className="page-title">About MedTechDB: Secure Healthcare Web Application</h1>
         <div className="page-content">
           <p>
-            Welcome to MedTech, where we're on a mission to revolutionize healthcare information sharing. Our platform is designed to empower individuals by providing easy access to vital health information, prioritizing reproductive health and women's healthcare access, and ensuring privacy, security, and autonomy for all users.
+            Welcome to MedTechDB, a secure healthcare web application designed and developed using React, Node.js, and MongoDB to enhance emergency care and patient data management. Our platform streamlines healthcare operations and ensures seamless access to critical medical information for healthcare providers.
           </p>
           <p>
-            At MedTech, we understand the challenges individuals face in accessing reliable healthcare information, particularly in underserved communities. That's why we're committed to bridging these gaps and empowering users to make informed decisions about their health and well-being.
+            At MedTechDB, we understand the critical importance of quick access to patient information during emergencies. That's why we've built a platform that revolutionizes healthcare access and emergency response, making it easier for medical professionals to provide the best possible care.
           </p>
-          <h2>Why Choose MedTech?</h2>
+          <h2>Why Choose MedTechDB?</h2>
           <ul>
             <li>
-              <strong>User-Friendly Platform:</strong> MedTech offers a user-friendly interface, making it easy for users to navigate and access the information they need quickly and efficiently.
+              <strong>Instant Patient Identification:</strong> Through fingerprint recognition or Aadhaar/Ayushman integration, healthcare providers can instantly identify patients and access their medical history, ensuring rapid emergency response.
             </li>
             <li>
-              <strong>Focus on Reproductive Health:</strong> We prioritize reproductive health and women's healthcare access, providing comprehensive resources and support to individuals seeking information and services in these areas.
+              <strong>Automated Claim Approvals:</strong> Our platform ensures hospitals can perform emergency operations without financial delays. Automated claim processing eliminates bureaucratic barriers during critical moments.
             </li>
             <li>
-              <strong>Privacy and Security:</strong> Your privacy and security are our top priorities. We employ advanced encryption methods and strict privacy policies to ensure that your personal information remains confidential and protected at all times.
+              <strong>Centralized Prescription History:</strong> Doctors gain immediate access to patients' past treatments and medical history, preventing redundant procedures and supporting informed decision-making.
             </li>
             <li>
-              <strong>Empowerment of Underserved Communities:</strong> MedTech aims to empower underserved communities, particularly rural residents, by providing them with access to crucial health information and resources that may otherwise be inaccessible.
+              <strong>Privacy and Security:</strong> Your data security is our top priority. We employ end-to-end encryption and strict privacy policies to ensure that all personal and medical information remains confidential and protected.
             </li>
             <li>
-              <strong>Commitment to Accessibility:</strong> We are committed to ensuring that our platform is accessible to all individuals, regardless of their background or circumstances. Our goal is to break down barriers to healthcare information and promote inclusivity and equality in access to health services.
+              <strong>Accessibility for All:</strong> MedTechDB features an inclusive design that ensures every individual, regardless of their background or circumstances, can access quality healthcare services.
             </li>
           </ul>
+          <h2>Technology Stack</h2>
           <p>
-            Join us in our mission to revolutionize healthcare information sharing. Whether you're looking to access reliable health information, prioritize reproductive health, or empower underserved communities, MedTech is here to support you every step of the way.
+            MedTechDB is built using modern, reliable technologies to ensure performance, security, and scalability:
+          </p>
+          <ul>
+            <li><strong>Frontend:</strong> React 18.2.0, React Router, Bootstrap 5</li>
+            <li><strong>Backend:</strong> Node.js, Express 4.18.2, MongoDB 5.0</li>
+            <li><strong>Additional Technologies:</strong> Web3.js, Truffle for blockchain integration</li>
+          </ul>
+          <p>
+            Join us in our mission to revolutionize healthcare access and emergency response. Whether you're a healthcare provider seeking efficient patient data management or a patient wanting secure access to your medical records, MedTechDB is here to support you every step of the way.
           </p>
           <p>
-            Experience the difference with MedTech - where healthcare information sharing is made easy, secure, and accessible for all!
+            Experience the difference with MedTechDB - where secure healthcare information management meets emergency care excellence!
           </p>
         </div>
       </div>

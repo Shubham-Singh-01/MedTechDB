@@ -1,0 +1,98 @@
+/* =================================
+   ABOUT PAGE STYLES
+   ================================= */
+
+.page-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background-image: url("../../assets/HomeAssetMain.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  padding: 0.25rem 1rem 1rem 1rem;
+  padding-top: 5px;
+  position: relative;
+}
+
+.page-card {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem 2rem;
+  width: 100%;
+  transition: all 0.3s ease;
+  max-width: 900px;
+}
+
+.page-card:hover {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.page-title {
+  text-align: center;
+  font-weight: 600;
+  color: #1a252f;
+  margin-bottom: 1.8rem;
+  font-size: 2rem;
+}
+
+.page-content {
+  color: #1a252f;
+  line-height: 1.6;
+}
+
+.page-content h2, .page-content h3 {
+  color: #2c3e50;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.page-content ul {
+  padding-left: 1.2rem;
+}
+
+.page-content li {
+  margin-bottom: 0.8rem;
+}
+
+/* Responsive design for About page */
+@media (max-width: 768px) {
+  .page-container {
+    padding: 0.5rem;
+    padding-top: 5px;
+  }
+  
+  .page-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .page-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .page-content {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-card {
+    padding: 1.5rem 1rem;
+  }
+  
+  .page-title {
+    font-size: 1.6rem;
+  }
+  
+  .page-content {
+    font-size: 0.9rem;
+  }
+}

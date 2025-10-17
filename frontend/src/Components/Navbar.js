@@ -1,11 +1,48 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import "./Navbar.css";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleBrandClick = (e) => {
+    e.preventDefault();
+    
+    // Scroll to top with smooth animation
+    const scrollToTop = () => {
+      // Try smooth scroll first
+      try {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: 'smooth'
+        });
+      } catch (error) {
+        // Fallback for browsers that don't support smooth scroll
+        window.scrollTo(0, 0);
+      }
+      // Also set these as backup
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    };
+    
+    // Check if already on home page
+    if (location.pathname === '/') {
+      // Just scroll to top
+      scrollToTop();
+    } else {
+      // Navigate to home first
+      navigate('/');
+      // Force scroll after navigation with a small delay
+      setTimeout(scrollToTop, 100);
+    }
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand" to="/" onClick={handleBrandClick}>
           <img src="/Favicon.ico" alt="MedTech Logo" width="30" height="30" className="d-inline-block align-text-top me-2"/>
           MedTech
         </Link>

@@ -1,14 +1,14 @@
 <div align="center">
 
-# 🏥 MedTech 🌐
+# 🏥 MedTechDB 🌐
 
-### *Revolutionizing Healthcare Information Sharing — Easy, Secure & Accessible*
+### *Secure Healthcare Web Application for Enhanced Emergency Care & Patient Data Management*
 
 [![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge\&logo=react\&logoColor=white)](https://reactjs.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-Latest-339933?style=for-the-badge\&logo=nodedotjs\&logoColor=white)](https://nodejs.org/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge\&logo=mongodb\&logoColor=white)](https://www.mongodb.com/)
 [![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge\&logo=express\&logoColor=white)](https://expressjs.com/)
 [![Web3](https://img.shields.io/badge/Web3.js-4.8.0-F16822?style=for-the-badge\&logo=web3dotjs\&logoColor=white)](https://web3js.readthedocs.io/)
-[![Solidity](https://img.shields.io/badge/Solidity-0.8.25-363636?style=for-the-badge\&logo=solidity\&logoColor=white)](https://soliditylang.org/)
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge\&logo=bootstrap\&logoColor=white)](https://getbootstrap.com/)
 
 ![Project Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
@@ -21,11 +21,11 @@
 
 ## 🌟 Overview
 
-**MedTech** is a next-generation healthcare information platform built to empower individuals with **reliable, secure, and accessible health data**. The platform focuses on **reproductive health**, **women’s healthcare**, and **underserved communities**, ensuring **privacy, autonomy, and inclusivity**.
+**MedTechDB** is a secure healthcare web application designed and developed using React, Node.js, and MongoDB to enhance emergency care and patient data management. The platform streamlines healthcare operations and ensures seamless access to critical medical information for healthcare providers.
 
 <div align="center">
 
-### 🧑‍⚕️ Empowering healthier decisions, one click at a time!
+### 🧑‍⚕️ Revolutionizing healthcare access and emergency response!
 
 </div>
 
@@ -46,7 +46,7 @@
 </p>
 
 <p align="center">
-  Experience a secure, user-friendly healthcare information system that bridges critical gaps in accessibility.
+  Experience a secure, user-friendly healthcare information system that bridges critical gaps in emergency healthcare.
 </p>
 
 ---
@@ -57,13 +57,13 @@
 
 <div align="center">
 
-|                  Feature                  | Description                                                    |
-| :---------------------------------------: | :------------------------------------------------------------- |
-|       📖 **User-Friendly Platform**       | Simple, intuitive UI for quick access to reliable health info  |
-|   👩‍⚕️ **Focus on Reproductive Health**  | Prioritizing women’s health & reproductive care resources      |
-|         🔒 **Privacy & Security**         | End-to-end encryption & strict privacy policies                |
-| 🌍 **Empowering Underserved Communities** | Bridging access gaps in rural and underprivileged regions      |
-|        ♿ **Accessibility for All**        | Inclusive design for every individual regardless of background |
+|                  Feature                  | Description                                                                  |
+| :---------------------------------------: | :--------------------------------------------------------------------------- |
+|       � **Patient Identification**       | Instant identification through fingerprint recognition or Aadhaar integration |
+|   � **Automated Claim Approvals**        | Ensuring hospitals can perform emergency operations without financial delays  |
+|   📋 **Centralized Prescription History** | Giving doctors access to past treatments for informed decision-making         |
+|         🔒 **Privacy & Security**         | End-to-end encryption & strict privacy policies                              |
+|        ♿ **Accessibility for All**        | Inclusive design for every individual regardless of background               |
 
 </div>
 
@@ -84,8 +84,8 @@
 
 [![Node.js](https://img.shields.io/badge/Node.js-Latest-339933?style=flat-square\&logo=nodedotjs\&logoColor=white)](https://nodejs.org/)
 [![Express](https://img.shields.io/badge/Express-4.18.2-000000?style=flat-square\&logo=express\&logoColor=white)](https://expressjs.com/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-5.0-47A248?style=flat-square\&logo=mongodb\&logoColor=white)](https://www.mongodb.com/)
 [![Web3](https://img.shields.io/badge/Web3.js-4.8.0-F16822?style=flat-square\&logo=web3dotjs\&logoColor=white)](https://web3js.readthedocs.io/)
-[![Solidity](https://img.shields.io/badge/Solidity-0.8.25-363636?style=flat-square\&logo=solidity\&logoColor=white)](https://soliditylang.org/)
 [![Truffle](https://img.shields.io/badge/Truffle-5.11.5-5E4672?style=flat-square\&logo=truffle\&logoColor=white)](https://trufflesuite.com/)
 
 </div>
@@ -115,10 +115,11 @@ DELETE /api/resources/:id   - Delete resource
 
 ## 🔒 Security
 
-* **Encryption First** — All sensitive user data encrypted with modern algorithms
+* **Fingerprint Authentication** — Secure patient identification
+* **Aadhaar/Ayushman Integration** — Alternative identification method
 * **Token-Based Authentication** — Secure JWT session management
 * **Role-Based Access Control** — Restrict unauthorized access
-* **Input Validation** — Strong sanitization against injections & XSS
+* **Encryption** — All sensitive patient data encrypted with modern algorithms
 
 ---
 
@@ -134,8 +135,8 @@ DELETE /api/resources/:id   - Delete resource
 1️⃣ **Clone repository**
 
 ```bash
-git clone https://github.com/Shubham-Singh-01/MedTech.git
-cd MedTech
+git clone https://github.com/Shubham-Singh-01/MedTechDB.git
+cd MedTechDB
 ```
 
 2️⃣ **Install dependencies**
@@ -158,25 +159,36 @@ Navigate to: `http://localhost:3000`
 ## 🏛️ Project Architecture
 
 ```
-MedTech/
+MedTechDB/
 ├── 📁 backend/
 │   ├── 📁 routes/
-│   │   ├── 📄 auth.js        # Authentication APIs
-│   │   └── 📄 resources.js   # Healthcare resources CRUD APIs
+│   │   ├── 📄 auth.js           # User authentication APIs
+│   │   ├── 📄 authDoctor.js     # Doctor authentication APIs
+│   │   ├── 📄 notes.js          # Patient notes APIs
+│   │   ├── 📄 notesDoctor.js    # Doctor notes APIs
+│   │   └── 📄 user-data.js      # User data APIs
 │   ├── 📁 models/
-│   │   ├── 📄 User.js        # User schema
-│   │   └── 📄 Resource.js    # Healthcare resources schema
-│   └── 📄 index.js           # Express server entry
+│   │   ├── 📄 User.js           # User schema
+│   │   ├── 📄 Doctor.js         # Doctor schema
+│   │   └── 📄 Notes.js          # Patient notes schema
+│   ├── 📁 middleware/
+│   │   ├── 📄 fetchuser.js      # User authentication middleware
+│   │   └── 📄 fetchDoctor.js    # Doctor authentication middleware
+│   └── 📄 index.js              # Express server entry
 │
 ├── 📁 frontend/
 │   ├── 📁 src/
-│   │   ├── 📄 App.js         # React app entry
-│   │   ├── 📄 Home.js        # Home page
-│   │   ├── 📄 About.js       # About page
-│   │   ├── 📄 Login.js       # User login
-│   │   ├── 📄 Signup.js      # User registration
-│   │   └── 📄 Navbar.js      # Navigation bar
-│   └── 📄 index.js           # React entry point
+│   │   ├── � Components/
+│   │   │   ├── 📄 Navbar.js     # Navigation component
+│   │   │   └── 📄 EditProfileForm.js # Profile editing
+│   │   ├── 📁 Pages/
+│   │   │   ├── 📄 Home.js       # Home page
+│   │   │   ├── 📄 Login.js      # User login
+│   │   │   ├── 📄 LoginDoctor.js # Doctor login
+│   │   │   ├── 📄 Signup.js     # User registration
+│   │   │   └── 📄 UserDetailsPage.js # Patient details
+│   │   └── 📄 App.js            # React app entry
+│   └── 📄 index.js              # React entry point
 ```
 
 ---
@@ -185,8 +197,8 @@ MedTech/
 
 * 📱 **Mobile App** — React Native integration
 * 🌗 **Dark/Light Mode** — Theme customization
-* 👥 **Community Features** — Forums, chat & support groups
-* 🧠 **AI Insights** — Personalized health recommendations
+* 👥 **Telemedicine Features** — Virtual consultations and remote monitoring
+* 🧠 **AI Diagnosis Support** — Assistance for healthcare providers
 * 🌍 **Multilingual Support** — Breaking language barriers
 
 ---
@@ -199,7 +211,7 @@ Released under the [MIT License](LICENSE)
 
 ## 🤝 Contributing
 
-Contributions are welcome! Check [issues](https://github.com/Shubham-Singh-01/MedTech/issues).
+Contributions are welcome! Check [issues](https://github.com/Shubham-Singh-01/MedTechDB/issues).
 
 ---
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "./axios";
 import EditProfileForm from "../Components/EditProfileForm";
-import "./Style.css"; // Import CSS file
+import "./StartDoctor.css"; // Import CSS file
 import UserDetailsPage from "./UserDetailsPage"; // Import the UserDetailsPage component
 
 const StartDoctor = () => {
@@ -11,6 +11,8 @@ const StartDoctor = () => {
   const [userData, setUserData] = useState(null);
   const [aadhaarSearch, setaadhaarSearch] = useState("");
   const [mobileSearch, setMobileSearch] = useState("");
+  const [isScanning, setIsScanning] = useState(false);
+  const [scanComplete, setScanComplete] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
@@ -124,10 +126,41 @@ const StartDoctor = () => {
     }
   };
 
+  const handleFingerprintScan = async () => {
+    setIsScanning(true);
+    setScanComplete(false);
+    
+    // Simulate fingerprint scanning process
+    setTimeout(() => {
+      setIsScanning(false);
+      setScanComplete(true);
+      
+      // Simulate finding a patient (dummy data)
+      setTimeout(() => {
+        const dummyPatientData = {
+          _id: "fingerprint_dummy_id",
+          name: "John Doe",
+          email: "john.doe@example.com",
+          phone1: "9876543210",
+          aadhaarCard: "123456789012",
+          bloodGroup: "A+",
+          dob: "1990-01-01",
+          gender: "male",
+          address: "123 Main Street, City",
+          photo: null
+        };
+        
+        setUserData(dummyPatientData);
+        navigate("/UserDetailsPage", { state: { userData: dummyPatientData } });
+        setScanComplete(false);
+      }, 1500);
+    }, 3000);
+  };
+
   console.log("StartDoctor component rendered");
 
   return (
-    <div className="auth-container">
+    <div className="start-doctor-page-container">
       {isLoading ? (
         <div className="auth-card">
           <div className="loading-spinner">
@@ -212,41 +245,80 @@ const StartDoctor = () => {
                 <div className="doctor-patient-section">
                   <div className="doctor-patient-search">
                     <h3 className="search-title">Patient Lookup</h3>
-                    <div className="search-form">
-                      <div className="auth-form-group">
-                        <label htmlFor="aadhaarSearch" className="auth-form-label">
-                          Aadhaar Card Number:
-                        </label>
-                        <input
-                          type="number"
-                          id="aadhaarSearch"
-                          name="aadhaarSearch"
-                          value={aadhaarSearch}
-                          onChange={(e) => setaadhaarSearch(e.target.value)}
-                          className="auth-form-control"
-                          placeholder="Enter 12-digit Aadhaar number"
-                        />
+                    
+                    {/* Fingerprint Scanner Section */}
+                    <div className="fingerprint-section">
+                      <h4 className="fingerprint-title">Fingerprint Scanner</h4>
+                      <div className="fingerprint-scanner">
+                        <div 
+                          className={`fingerprint-icon ${isScanning ? 'scanning' : ''} ${scanComplete ? 'complete' : ''}`}
+                          onClick={handleFingerprintScan}
+                        >
+                          <div className="fingerprint-ridges">
+                            <div className="ridge"></div>
+                            <div className="ridge"></div>
+                            <div className="ridge"></div>
+                            <div className="ridge"></div>
+                            <div className="ridge"></div>
+                          </div>
+                          {isScanning && <div className="scan-line"></div>}
+                        </div>
+                        <button 
+                          className="fingerprint-btn"
+                          onClick={handleFingerprintScan}
+                          disabled={isScanning}
+                        >
+                          {isScanning ? 'Scanning...' : scanComplete ? 'Scan Complete!' : 'Start Fingerprint Scan'}
+                        </button>
+                        {isScanning && <p className="scan-status">Place finger on scanner...</p>}
+                        {scanComplete && <p className="scan-status success">Patient found! Redirecting...</p>}
                       </div>
-                      <div className="auth-form-group">
-                        <label htmlFor="mobileSearch" className="auth-form-label">
-                          Mobile Number:
-                        </label>
-                        <input
-                          type="text"
-                          id="mobileSearch"
-                          name="mobileSearch"
-                          value={mobileSearch}
-                          onChange={(e) => setMobileSearch(e.target.value)}
-                          className="auth-form-control"
-                          placeholder="Enter 10-digit mobile number"
-                        />
+                    </div>
+
+                    {/* Divider */}
+                    <div className="lookup-divider">
+                      <span>OR</span>
+                    </div>
+
+                    {/* Manual Search Section */}
+                    <div className="manual-search-section">
+                      <h4 className="manual-search-title">Manual Search</h4>
+                      <div className="search-form">
+                        <div className="auth-form-group">
+                          <label htmlFor="aadhaarSearch" className="auth-form-label">
+                            Aadhaar Card Number:
+                          </label>
+                          <input
+                            type="number"
+                            id="aadhaarSearch"
+                            name="aadhaarSearch"
+                            value={aadhaarSearch}
+                            onChange={(e) => setaadhaarSearch(e.target.value)}
+                            className="auth-form-control"
+                            placeholder="Enter 12-digit Aadhaar number"
+                          />
+                        </div>
+                        <div className="auth-form-group">
+                          <label htmlFor="mobileSearch" className="auth-form-label">
+                            Mobile Number:
+                          </label>
+                          <input
+                            type="text"
+                            id="mobileSearch"
+                            name="mobileSearch"
+                            value={mobileSearch}
+                            onChange={(e) => setMobileSearch(e.target.value)}
+                            className="auth-form-control"
+                            placeholder="Enter 10-digit mobile number"
+                          />
+                        </div>
+                        <button
+                          onClick={handleRetrieveUserDetails}
+                          className="auth-submit-btn patient-search-btn"
+                        >
+                          Search Patient
+                        </button>
                       </div>
-                      <button
-                        onClick={handleRetrieveUserDetails}
-                        className="auth-submit-btn patient-search-btn"
-                      >
-                        Search Patient
-                      </button>
                     </div>
                   </div>
 

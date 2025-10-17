@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "./axios";
 import EditProfileForm from "../Components/EditProfileForm";
-import "./Style.css"; // Import CSS file
+import "./Start.css"; // Import CSS file
 
 const Start = () => {
   const navigate = useNavigate();
@@ -109,7 +109,7 @@ const Start = () => {
   console.log("Start component rendered");
 
   return (
-    <div className="auth-container">
+    <div className="start-page-container">
       {isLoading ? (
         <div className="auth-card">
           <div className="loading-spinner">

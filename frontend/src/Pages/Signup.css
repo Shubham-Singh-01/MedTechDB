@@ -1,0 +1,205 @@
+/* =================================
+   SIGNUP PAGE STYLES
+   ================================= */
+
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../../assets/HomeAssetMain.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  padding: 2rem 1rem;
+  position: relative;
+}
+
+.auth-card {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem 2rem;
+  width: 100%;
+  transition: all 0.3s ease;
+  max-width: 420px;
+}
+
+.auth-card:hover {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.auth-title {
+  text-align: center;
+  font-weight: 600;
+  color: #1a252f;
+  margin-bottom: 1.8rem;
+  font-size: 1.8rem;
+}
+
+.auth-form {
+  width: 100%;
+}
+
+.auth-form-group {
+  margin-bottom: 0.8rem;
+  position: relative;
+}
+
+.auth-form-label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+  color: #2c3e50;
+  font-size: 0.9rem;
+}
+
+.auth-form-control {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid rgba(41, 128, 185, 0.3);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(5px);
+  color: #1a252f;
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.auth-form-control::placeholder {
+  color: rgba(26, 37, 47, 0.7);
+}
+
+.auth-form-control:focus {
+  outline: none;
+  border-color: rgba(52, 152, 219, 0.6);
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+  transform: translateY(-1px);
+}
+
+.auth-form-control:hover {
+  border-color: rgba(41, 128, 185, 0.4);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.auth-form-text {
+  font-size: 0.8rem;
+  color: #3c4858;
+  margin-top: 0.25rem;
+}
+
+.auth-submit-btn {
+  background: rgba(41, 128, 185, 0.9);
+  backdrop-filter: blur(5px);
+  color: white;
+  border: 1px solid rgba(41, 128, 185, 0.4);
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(41, 128, 185, 0.3);
+  width: 100%;
+  padding: 0.85rem;
+  margin-top: 0.8rem;
+}
+
+.auth-submit-btn:hover {
+  background: rgba(31, 97, 141, 0.95);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(41, 128, 185, 0.4);
+}
+
+.auth-submit-btn:active {
+  transform: translateY(0);
+}
+
+.auth-link-text {
+  text-align: center;
+  margin-top: 1.2rem;
+  color: #3c4858;
+  font-size: 0.9rem;
+}
+
+.auth-link {
+  color: #2980b9;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.auth-link:hover {
+  color: #1f618d;
+  text-decoration: underline;
+}
+
+/* Responsive design for Signup page */
+@media (max-width: 768px) {
+  .auth-container {
+    padding: 1.5rem 1rem;
+  }
+  
+  .auth-card {
+    padding: 2rem 1.5rem;
+    max-width: 95%;
+  }
+  
+  .auth-title {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .auth-form-control {
+    padding: 0.7rem 0.9rem;
+    font-size: 0.9rem;
+  }
+  
+  .auth-submit-btn {
+    padding: 0.8rem;
+    font-size: 0.95rem;
+  }
+  
+  .auth-link-text {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-container {
+    padding: 1rem 0.5rem;
+  }
+  
+  .auth-card {
+    padding: 1.8rem 1.2rem;
+  }
+  
+  .auth-title {
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .auth-form-control {
+    padding: 0.65rem 0.8rem;
+    font-size: 0.85rem;
+  }
+  
+  .auth-submit-btn {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+  
+  .auth-link-text {
+    font-size: 0.8rem;
+    margin-top: 1rem;
+  }
+}

@@ -1,6 +1,6 @@
 //Contact.js
 import React from "react";
-import './Style.css';
+import './Contact.css';
 
 const Contact = () => {
   return (
@@ -11,13 +11,13 @@ const Contact = () => {
           <h3>Contact Details:</h3>
           <ul>
             <li>
-              <strong>Email:</strong> yourmedtech@example.com
+              <strong>Email:</strong> singh200410@gmail.com
             </li>
             <li>
-              <strong>Phone:</strong> +1234567890
+              <strong>Phone:</strong> +91 (637) 803-1001
             </li>
             <li>
-              <strong>Address:</strong> A-45, Vasant Kunj, Delhi, India, 110070.
+              <strong>Address:</strong> A-45, Vasant Vihar, Delhi, India, 110070.
             </li>
           </ul>
           
