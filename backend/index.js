@@ -1,4 +1,5 @@
 //index.js backend
+// Production deployment - October 19, 2025
 require('dotenv').config();
 const connectToMongo = require('./db');
 const express = require('express');
