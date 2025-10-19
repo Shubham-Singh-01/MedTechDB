@@ -12,7 +12,7 @@
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge\&logo=bootstrap\&logoColor=white)](https://getbootstrap.com/)
 
 ![Project Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
-![Version](https://img.shields.io/badge/Version-5.1.2-blue?style=for-the-badge)
+![Version](https://img.shields.io/badge/Version-5.1.0-blue?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
 </div>
@@ -39,10 +39,10 @@
 </p>
 
 <p align="center">
-  <a href="https://medtech.onrender.com/" target="_blank">
-    <img src="https://img.shields.io/badge/Backend%20on-Render-0033AD?logo=render&logoColor=white" alt="Render Badge">
+  <a href="https://medtechdb.onrender.com/" target="_blank">
+    <img src="https://img.shields.io/badge/Full%20Stack%20on-Render-0033AD?logo=render&logoColor=white" alt="Render Badge">
   </a><br/>
-  <sub>Backend & Full API hosted on Render (may sleep)</sub>
+  <sub>Full Stack (Frontend + Backend) hosted on Render (may sleep after 15 mins)</sub>
 </p>
 
 <p align="center">
@@ -59,8 +59,8 @@
 
 |                  Feature                  | Description                                                                  |
 | :---------------------------------------: | :--------------------------------------------------------------------------- |
-|       � **Patient Identification**       | Instant identification through fingerprint recognition or Aadhaar integration |
-|   � **Automated Claim Approvals**        | Ensuring hospitals can perform emergency operations without financial delays  |
+|       👤 **Patient Identification**       | Instant identification through fingerprint recognition or Aadhaar integration |
+|   ✅ **Automated Claim Approvals**        | Ensuring hospitals can perform emergency operations without financial delays  |
 |   📋 **Centralized Prescription History** | Giving doctors access to past treatments for informed decision-making         |
 |         🔒 **Privacy & Security**         | End-to-end encryption & strict privacy policies                              |
 |        ♿ **Accessibility for All**        | Inclusive design for every individual regardless of background               |
@@ -127,7 +127,7 @@ DELETE /api/resources/:id   - Delete resource
 
 ### Prerequisites
 
-* Node.js (v14+)
+* Node.js (v18+)
 * npm installed
 
 ### Installation
@@ -142,13 +142,17 @@ cd MedTechDB
 2️⃣ **Install dependencies**
 
 ```bash
-npm install && cd backend && npm install && cd ..
+npm install --prefix backend && npm install --prefix frontend
 ```
 
 3️⃣ **Start development servers**
 
 ```bash
-npm run both
+# Terminal 1: Start backend
+npm start --prefix backend
+
+# Terminal 2: Start frontend
+npm start --prefix frontend
 ```
 
 4️⃣ **Open in browser**
@@ -178,7 +182,7 @@ MedTechDB/
 │
 ├── 📁 frontend/
 │   ├── 📁 src/
-│   │   ├── � Components/
+│   │   ├── 📁 Components/
 │   │   │   ├── 📄 Navbar.js     # Navigation component
 │   │   │   └── 📄 EditProfileForm.js # Profile editing
 │   │   ├── 📁 Pages/
