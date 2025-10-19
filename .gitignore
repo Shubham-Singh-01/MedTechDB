@@ -28,4 +28,5 @@ yarn-error.log*
 # Ignore all markdown files except README.md
 *.md
 !README.md
+!TEST_REPORT.md
 
