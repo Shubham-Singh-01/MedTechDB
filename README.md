@@ -163,8 +163,6 @@ All 6 automated tests pass:
 
 For detailed testing documentation and interview preparation, see:
 * [TEST_REPORT.md](TEST_REPORT.md) - Complete test results
-* [PERFORMANCE_VALIDATION_REPORT.md](PERFORMANCE_VALIDATION_REPORT.md) - Comprehensive validation with evidence
-* [QUICK_VALIDATION_GUIDE.md](QUICK_VALIDATION_GUIDE.md) - Quick reference for interview
 
 ---
 
