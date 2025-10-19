@@ -244,28 +244,6 @@ npm run test:performance
 
 ---
 
-## Interview Talking Points
-
-### When Discussing Performance Optimization:
-> "I validated all performance claims through automated testing with Jest and Supertest. The Login API consistently responds in under 730ms, which represents a 30% improvement over the typical 800ms baseline for unoptimized MERN applications. This was achieved through database indexing, efficient JWT validation, and optimized Express middleware."
-
-### When Discussing State Management:
-> "I implemented React hooks and custom state management patterns that reduced dashboard update latency by 20%. The protected routes validate JWT tokens in 310ms, and the system handles concurrent requests with an average of 68ms per request, showing efficient state handling under load."
-
-### When Discussing Security:
-> "I built a complete RESTful API with JWT authentication and role-based access control. The system properly rejects unauthorized requests in 225ms with 401 status codes, and supports separate authentication flows for patients and doctors through custom middleware."
-
-### Key Technical Terms to Mention:
-- **Jest & Supertest**: Industry-standard testing frameworks
-- **JWT (JSON Web Token)**: Secure, stateless authentication
-- **bcrypt**: Industry-standard password hashing with salt
-- **MERN Stack**: MongoDB, Express, React, Node.js
-- **RESTful Architecture**: Standard HTTP methods and status codes
-- **Async/Await**: Modern JavaScript for non-blocking operations
-- **Middleware Pattern**: Express.js request processing pipeline
-
----
-
 ## Conclusion
 
 All three performance claims have been validated with concrete evidence through automated testing. The test suite runs against the production deployment and can be executed at any time to verify these metrics. The improvements are measurable, repeatable, and backed by industry-standard testing practices.
