@@ -27,11 +27,16 @@ const StartDoctor = () => {
     phone2: "",
     ayushmanCard: "",
     bloodGroup: "",
-    height: "",
+    heightFeet: "",
+    heightInches: "",
     weight: "",
     aadhaarCard: "",
     dob: "", // Add date of birth field
     photo: "", // Add photo field (you can store a URL or base64 data)
+    specialization: "", // Doctor-specific field
+    licenseNumber: "", // Doctor-specific field
+    experience: "", // Doctor-specific field
+    hospital: "", // Doctor-specific field
   });
 
   useEffect(() => {
@@ -41,6 +46,14 @@ const StartDoctor = () => {
         setError(null);
         const response = await api.get("/authdoctor/getdoctor");
         setDoctorData(response.data);
+        
+        // Format DOB for date input (YYYY-MM-DD format)
+        let formattedDob = "";
+        if (response.data.dob) {
+          const dateObj = new Date(response.data.dob);
+          formattedDob = dateObj.toISOString().split('T')[0]; // Gets YYYY-MM-DD
+        }
+        
         setFormData({
           name: response.data.name,
           email: response.data.email,
@@ -52,12 +65,16 @@ const StartDoctor = () => {
           phone2: response.data.phone2 || "",
           ayushmanCard: response.data.ayushmanCard || "",
           bloodGroup: response.data.bloodGroup || "",
-          heightFeet: response.data.heightFeet || "", // Include heightFeet
-          heightInches: response.data.heightInches || "", // Include heightInches
+          heightFeet: response.data.heightFeet !== null && response.data.heightFeet !== undefined ? response.data.heightFeet : "", // Include heightFeet - support 0
+          heightInches: response.data.heightInches !== null && response.data.heightInches !== undefined ? response.data.heightInches : "", // Include heightInches - support 0
           weight: response.data.weight || "",
           aadhaarCard: response.data.aadhaarCard || "",
-          dob: response.data.dob || "", // Add date of birth field
+          dob: formattedDob, // Format the DOB for date input
           photo: response.data.photo || "", // Add photo field
+          specialization: response.data.specialization || "", // Doctor-specific field
+          licenseNumber: response.data.licenseNumber || "", // Doctor-specific field
+          experience: response.data.experience !== null && response.data.experience !== undefined ? response.data.experience : "", // Doctor-specific field - support 0
+          hospital: response.data.hospital || "", // Doctor-specific field
         });
       } catch (error) {
         setError("Error fetching doctor data");
@@ -93,6 +110,14 @@ const StartDoctor = () => {
 
   const handleCancelClick = () => {
     setIsEditing(false);
+    
+    // Format DOB for date input (YYYY-MM-DD format)
+    let formattedDob = "";
+    if (doctorData.dob) {
+      const dateObj = new Date(doctorData.dob);
+      formattedDob = dateObj.toISOString().split('T')[0]; // Gets YYYY-MM-DD
+    }
+    
     setFormData({
       name: doctorData.name,
       email: doctorData.email,
@@ -104,12 +129,16 @@ const StartDoctor = () => {
       phone2: doctorData.phone2 || "",
       ayushmanCard: doctorData.ayushmanCard || "",
       bloodGroup: doctorData.bloodGroup || "",
-      heightFeet: doctorData.heightFeet || "", // Include heightFeet
-      heightInches: doctorData.heightInches || "", // Include heightInches
+      heightFeet: doctorData.heightFeet !== null && doctorData.heightFeet !== undefined ? doctorData.heightFeet : "", // Include heightFeet - support 0
+      heightInches: doctorData.heightInches !== null && doctorData.heightInches !== undefined ? doctorData.heightInches : "", // Include heightInches - support 0
       weight: doctorData.weight || "",
       aadhaarCard: doctorData.aadhaarCard || "",
-      dob: doctorData.dob || "", // Add date of birth field
+      dob: formattedDob, // Format the DOB for date input
       photo: doctorData.photo || "", // Add photo field
+      specialization: doctorData.specialization || "", // Doctor-specific field
+      licenseNumber: doctorData.licenseNumber || "", // Doctor-specific field
+      experience: doctorData.experience !== null && doctorData.experience !== undefined ? doctorData.experience : "", // Doctor-specific field - support 0
+      hospital: doctorData.hospital || "", // Doctor-specific field
     });
   };
 
@@ -186,6 +215,7 @@ const StartDoctor = () => {
               setFormData={setFormData}
               handleSubmit={handleSubmit}
               handleCancelClick={handleCancelClick}
+              userType="doctor"
             />
           ) : (
             <div className="auth-card profile-dashboard doctor-dashboard">

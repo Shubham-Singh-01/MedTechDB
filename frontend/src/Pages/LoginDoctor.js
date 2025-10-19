@@ -8,7 +8,8 @@ const LoginDoctor = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/authdoctor/LoginDoctor", {
+    const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+    const response = await fetch(`${apiUrl}/authdoctor/LoginDoctor`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

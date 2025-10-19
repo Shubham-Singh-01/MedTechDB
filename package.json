@@ -2,8 +2,9 @@
   "name": "medtech-db",
   "version": "5.1.0",
   "description": "<div align=\"center\">",
-  "main": "index.js",
+  "main": "backend/index.js",
   "scripts": {
+    "start": "npm start --prefix backend",
     "frontend": "npm start --prefix frontend",
     "backend": "npm run dev --prefix backend",
     "both": "concurrently \"npm run frontend\" \"npm run backend\""

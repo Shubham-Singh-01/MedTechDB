@@ -21,7 +21,8 @@ const Start = () => {
     phone2: "",
     ayushmanCard: "",
     bloodGroup: "",
-    height: "",
+    heightFeet: "",
+    heightInches: "",
     weight: "",
     aadhaarCard: "",
     dob: "", // Add date of birth field
@@ -35,6 +36,14 @@ const Start = () => {
         setError(null);
         const response = await api.get("/auth/getuser");
         setUserData(response.data);
+        
+        // Format DOB for date input (YYYY-MM-DD format)
+        let formattedDob = "";
+        if (response.data.dob) {
+          const dateObj = new Date(response.data.dob);
+          formattedDob = dateObj.toISOString().split('T')[0]; // Gets YYYY-MM-DD
+        }
+        
         setFormData({
           name: response.data.name,
           email: response.data.email,
@@ -46,11 +55,11 @@ const Start = () => {
           phone2: response.data.phone2 || "",
           ayushmanCard: response.data.ayushmanCard || "",
           bloodGroup: response.data.bloodGroup || "",
-          heightFeet: response.data.heightFeet || "", // Include heightFeet
-          heightInches: response.data.heightInches || "", // Include heightInches
+          heightFeet: response.data.heightFeet !== null && response.data.heightFeet !== undefined ? response.data.heightFeet : "", // Include heightFeet - support 0
+          heightInches: response.data.heightInches !== null && response.data.heightInches !== undefined ? response.data.heightInches : "", // Include heightInches - support 0
           weight: response.data.weight || "",
           aadhaarCard: response.data.aadhaarCard || "",
-          dob: response.data.dob || "",
+          dob: formattedDob,
           photo: response.data.photo || "",
         });
       } catch (error) {
@@ -87,6 +96,14 @@ const Start = () => {
 
   const handleCancelClick = () => {
     setIsEditing(false);
+    
+    // Format DOB for date input (YYYY-MM-DD format)
+    let formattedDob = "";
+    if (userData.dob) {
+      const dateObj = new Date(userData.dob);
+      formattedDob = dateObj.toISOString().split('T')[0]; // Gets YYYY-MM-DD
+    }
+    
     setFormData({
       name: userData.name,
       email: userData.email,
@@ -98,10 +115,10 @@ const Start = () => {
       phone2: userData.phone2 || "",
       ayushmanCard: userData.ayushmanCard || "",
       bloodGroup: userData.bloodGroup || "",
-      heightFeet: userData.heightFeet || "", // Include heightFeet
-      heightInches: userData.heightInches || "", // Include heightInches
+      heightFeet: userData.heightFeet !== null && userData.heightFeet !== undefined ? userData.heightFeet : "", // Include heightFeet - support 0
+      heightInches: userData.heightInches !== null && userData.heightInches !== undefined ? userData.heightInches : "", // Include heightInches - support 0
       weight: userData.weight || "",
-      dob: userData.dob || "",
+      dob: formattedDob,
       aadhaarCard: userData.aadhaarCard || "",
     });
   };
@@ -135,6 +152,7 @@ const Start = () => {
               setFormData={setFormData}
               handleSubmit={handleSubmit}
               handleCancelClick={handleCancelClick}
+              userType="user"
             />
           ) : (
             <div className="auth-card profile-dashboard">
@@ -170,7 +188,8 @@ const Start = () => {
                   <div className="stat-item">
                     <span className="stat-label">Height</span>
                     <span className="stat-value">
-                      {userData.heightFeet && userData.heightInches 
+                      {(userData.heightFeet !== null && userData.heightFeet !== undefined && userData.heightFeet !== '') && 
+                       (userData.heightInches !== null && userData.heightInches !== undefined && userData.heightInches !== '')
                         ? `${userData.heightFeet}'${userData.heightInches}"` 
                         : 'Not added'}
                     </span>

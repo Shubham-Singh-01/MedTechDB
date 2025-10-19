@@ -130,7 +130,8 @@ const UserDetailsPage = () => {
         <div className="info-item">
           <span className="info-label">Height</span>
           <span className="info-value">
-            {userData.heightFeet && userData.heightInches 
+            {(userData.heightFeet !== null && userData.heightFeet !== undefined && userData.heightFeet !== '') && 
+             (userData.heightInches !== null && userData.heightInches !== undefined && userData.heightInches !== '')
               ? `${userData.heightFeet}' ${userData.heightInches}"` 
               : 'Not provided'}
           </span>
@@ -246,7 +247,9 @@ const UserDetailsPage = () => {
                   <div className="stat-item">
                     <span className="stat-label">BMI</span>
                     <span className="stat-value">
-                      {userData.weight && userData.heightFeet && userData.heightInches ? 
+                      {(userData.weight && userData.weight !== null && userData.weight !== undefined) && 
+                       (userData.heightFeet !== null && userData.heightFeet !== undefined) && 
+                       (userData.heightInches !== null && userData.heightInches !== undefined) ? 
                         (userData.weight / Math.pow((userData.heightFeet * 12 + userData.heightInches) * 0.0254, 2)).toFixed(1)
                         : 'N/A'}
                     </span>

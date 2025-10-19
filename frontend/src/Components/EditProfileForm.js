@@ -7,9 +7,11 @@ const EditProfileForm = ({
   setFormData,
   handleSubmit,
   handleCancelClick,
+  userType = 'user', // Add userType prop with default value
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 3;
+  const isDoctorForm = userType === 'doctor';
+  const totalPages = isDoctorForm ? 4 : 3; // Add an extra page for doctors
 
   // Prevent body scrolling when form is mounted
   useEffect(() => {
@@ -54,15 +56,18 @@ const EditProfileForm = ({
   const renderPageIndicator = () => {
     return (
       <div className="page-indicator">
-        {[1, 2, 3].map((page) => (
-          <div
-            key={page}
-            className={`page-dot ${
-              page === currentPage ? 'active' : page < currentPage ? 'completed' : ''
-            }`}
-            onClick={() => setCurrentPage(page)}
-          />
-        ))}
+        {[...Array(totalPages)].map((_, index) => {
+          const page = index + 1;
+          return (
+            <div
+              key={page}
+              className={`page-dot ${
+                page === currentPage ? 'active' : page < currentPage ? 'completed' : ''
+              }`}
+              onClick={() => setCurrentPage(page)}
+            />
+          );
+        })}
       </div>
     );
   };
@@ -253,7 +258,7 @@ const EditProfileForm = ({
                     type="number"
                     id="heightFeet"
                     name="heightFeet"
-                    value={formData.heightFeet || ""}
+                    value={formData.heightFeet !== null && formData.heightFeet !== undefined ? formData.heightFeet : ""}
                     onChange={handleInputChange}
                     className="edit-form-control"
                     placeholder="Feet"
@@ -266,7 +271,7 @@ const EditProfileForm = ({
                     type="number"
                     id="heightInches"
                     name="heightInches"
-                    value={formData.heightInches || ""}
+                    value={formData.heightInches !== null && formData.heightInches !== undefined ? formData.heightInches : ""}
                     onChange={handleInputChange}
                     className="edit-form-control"
                     placeholder="Inches"
@@ -385,6 +390,108 @@ const EditProfileForm = ({
                 rows="4"
                 placeholder="Enter your permanent address..."
               ></textarea>
+            </div>
+            
+            <div className="edit-form-buttons">
+              <div className="edit-nav-buttons">
+                <button
+                  type="button"
+                  className="edit-btn edit-btn-secondary"
+                  onClick={prevPage}
+                >
+                  ← Previous
+                </button>
+              </div>
+              <div className="edit-action-buttons">
+                <button
+                  type="button"
+                  className="edit-btn edit-btn-danger"
+                  onClick={handleCancelClick}
+                >
+                  Cancel
+                </button>
+                {isDoctorForm ? (
+                  <button
+                    type="button"
+                    className="edit-btn edit-btn-primary"
+                    onClick={nextPage}
+                  >
+                    Next Step →
+                  </button>
+                ) : (
+                  <button 
+                    type="submit" 
+                    className="edit-btn edit-btn-primary"
+                  >
+                    Save Profile ✓
+                  </button>
+                )}
+              </div>
+            </div>
+          </form>
+        )}
+        {isDoctorForm && currentPage === 4 && (
+          <form onSubmit={handleFormSubmit}>
+            <h2 style={{ fontSize: '1.3rem', marginBottom: '1.5rem', textAlign: 'center', color: '#1a252f' }}>
+              Professional Information
+            </h2>
+            
+            <div className="edit-form-row">
+              <div className="edit-form-group">
+                <label htmlFor="specialization" className="edit-form-label">Specialization</label>
+                <input
+                  type="text"
+                  id="specialization"
+                  name="specialization"
+                  value={formData.specialization || ""}
+                  onChange={handleInputChange}
+                  className="edit-form-control"
+                  placeholder="e.g., Cardiology, Neurology"
+                />
+              </div>
+              
+              <div className="edit-form-group">
+                <label htmlFor="licenseNumber" className="edit-form-label">Medical License Number</label>
+                <input
+                  type="text"
+                  id="licenseNumber"
+                  name="licenseNumber"
+                  value={formData.licenseNumber || ""}
+                  onChange={handleInputChange}
+                  className="edit-form-control"
+                  placeholder="e.g., MCI123456"
+                />
+              </div>
+            </div>
+            
+            <div className="edit-form-row">
+              <div className="edit-form-group">
+                <label htmlFor="experience" className="edit-form-label">Years of Experience</label>
+                <input
+                  type="number"
+                  id="experience"
+                  name="experience"
+                  value={formData.experience || ""}
+                  onChange={handleInputChange}
+                  className="edit-form-control"
+                  placeholder="10"
+                  min="0"
+                  max="60"
+                />
+              </div>
+              
+              <div className="edit-form-group">
+                <label htmlFor="hospital" className="edit-form-label">Hospital / Clinic Name</label>
+                <input
+                  type="text"
+                  id="hospital"
+                  name="hospital"
+                  value={formData.hospital || ""}
+                  onChange={handleInputChange}
+                  className="edit-form-control"
+                  placeholder="e.g., City Medical Center"
+                />
+              </div>
             </div>
             
             <div className="edit-form-buttons">

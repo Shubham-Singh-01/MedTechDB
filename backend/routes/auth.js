@@ -6,7 +6,7 @@ const bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
 var fetchuser = require('../middleware/fetchuser');
 
-const JWT_SECRET = "FollowThatDamnTrainCJ";
+const JWT_SECRET = process.env.JWT_SECRET;
 const generateSessionToken = () => {
   // Logic to generate a unique session token
   return Math.random().toString(36).substr(2, 9);
@@ -133,8 +133,23 @@ router.put('/updateuser', fetchuser, async (req, res) => {
 
     // Build the update object with non-empty fields
     const updateObj = Object.entries(updateData).reduce((obj, [key, value]) => {
-      if (value !== '') {
-        obj[key] = value;
+      if (value !== '' && value !== null && value !== undefined) {
+        // Handle numeric fields - convert string to number, but allow 0
+        if (key === 'heightFeet' || key === 'heightInches' || key === 'weight' || key === 'experience') {
+          const numValue = Number(value);
+          // Check if conversion results in a valid number (including 0)
+          if (!isNaN(numValue)) {
+            obj[key] = numValue;
+          }
+        }
+        // Handle date fields
+        else if (key === 'dob') {
+          obj[key] = new Date(value);
+        }
+        // Handle other fields
+        else {
+          obj[key] = value;
+        }
       }
       return obj;
     }, {});

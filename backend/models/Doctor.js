@@ -52,6 +52,14 @@ const DoctorSchema = new mongoose.Schema({
   
   photo: mongoose.SchemaTypes.String,
   
+  specialization: mongoose.SchemaTypes.String,
+  
+  licenseNumber: mongoose.SchemaTypes.String,
+  
+  experience: mongoose.SchemaTypes.Number,
+  
+  hospital: mongoose.SchemaTypes.String,
+  
   timestamp: {
     type: mongoose.SchemaTypes.String,
     required: false,
