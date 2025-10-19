@@ -161,7 +161,7 @@ All 6 automated tests pass:
 5. JWT Security - 225ms
 6. Concurrent Handling - 68ms average
 
-For detailed testing documentation and interview preparation, see:
+For detailed testing documentation, see:
 * [TEST_REPORT.md](TEST_REPORT.md) - Complete test results
 
 ---
